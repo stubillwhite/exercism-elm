@@ -18,11 +18,6 @@ keep predicate coll =
         coll
 
 
-compliment : Predicate t -> Predicate t
-compliment predicate =
-    \x -> not (predicate x)
-
-
 discard : Predicate t -> List t -> List t
 discard predicate coll =
-    keep (compliment predicate) coll
+    keep (not << predicate) coll
