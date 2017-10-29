@@ -8,11 +8,9 @@ sumOfMultiples factors limit =
             List.range 1 (limit - 1)
 
         isMultiple x =
-            factors
-                |> List.filter (\factor -> x % factor == 0)
-                |> List.isEmpty
-                |> not
+            List.any (\f -> x % f == 0) factors
+
     in
     naturals
         |> List.filter isMultiple
-        |> List.foldl (+) 0
+        |> List.sum
